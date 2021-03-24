@@ -57,8 +57,9 @@ function getCityData(cityName) {
         fiveDay: []
       };
       for (let i = 0; i < 5; i++) {
+        currDate.setDate(currDate.getDate() + 1);
         const dailyObj = {
-          date: `${currDate.getMonth() + 1 + i}/${currDate.getDate()}/${currDate.getFullYear()}`,
+          date: `${currDate.getMonth() + 1}/${currDate.getDate()}/${currDate.getFullYear()}`,
           icon: data.daily[i].weather[0].icon,
           temp: data.daily[i].temp,
           humid: data.daily[i].humidity
