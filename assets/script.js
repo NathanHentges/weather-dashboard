@@ -11,6 +11,11 @@ var badInputEl = $("#input-error");
 
 // Global variables
 var cityHistArr = JSON.parse(localStorage.getItem("cities")) || {};
+if (cityHistArr !== {}) {
+  Object.keys(cityHistArr).forEach((key) => {
+    addButton(key);
+  });
+}
 
 
 // ---- Functions ----
@@ -72,6 +77,13 @@ function getCityData(cityName) {
     });
 }
 
+function addButton(cityName) {
+  const btn = $("<button>").addClass("list-group-item list-group-item-action hist-city text-capitalize")
+    .attr("type", "button")
+    .text(cityName);
+  cityHistory.append(btn);
+}
+
 // update info on screen
 function showCityData(cityName) {
   const curCity = cityHistArr[cityName];
@@ -112,12 +124,11 @@ function badInput(errorText) {
 }
 
 function citySubmitted(inputted) {
-  if (inputted in cityHistArr) {
-    // City has already been searched
-    showCityData(inputted);
-  } else {
-    getCityData(inputted);
+  if (!(inputted in cityHistArr)) {
+    // If it's not already known, create new button
+    addButton(inputted);
   }
+  getCityData(inputted);
 }
 
 
@@ -140,4 +151,9 @@ badInputEl.filter("button").on("click", (event) => {
   setTimeout(() => {
     badInputEl.parent().addClass("d-none");
   }, 200);
+});
+
+cityHistory.on("click", "button", (event) => {
+  event.preventDefault();
+  showCityData($(event.currentTarget).text());
 });
