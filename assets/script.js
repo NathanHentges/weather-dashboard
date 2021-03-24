@@ -66,6 +66,10 @@ function getCityData(cityName) {
         weatherData.fiveDay.push(dailyObj);
       }
       // Relevant data extracted, add to history & save to localStorage
+      if (!(cityName in cityHistArr)) {
+        // If it's not already known, create new button
+        addButton(cityName);
+      }
       cityHistArr[cityName] = weatherData;
       localStorage.setItem("cities", JSON.stringify(cityHistArr));
       // Display information
@@ -123,22 +127,13 @@ function badInput(errorText) {
   badInputEl.siblings("p").text(errorText);
 }
 
-function citySubmitted(inputted) {
-  if (!(inputted in cityHistArr)) {
-    // If it's not already known, create new button
-    addButton(inputted);
-  }
-  getCityData(inputted);
-}
-
-
 // when the city is inputted
 inputForm.submit((event) => {
   event.preventDefault();
   const userInput = cityInput.val();
   // test if user inputted string only contains letters
   if (/^[a-zA-Z .,]+$/.test(userInput)) {
-    citySubmitted(userInput.toLowerCase());
+    getCityData(userInput.toLowerCase());
   } else {
     badInput("Only letters, spaces, and periods please");
   }
