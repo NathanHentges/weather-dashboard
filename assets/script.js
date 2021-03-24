@@ -60,20 +60,47 @@ function getCityData(cityName) {
         };
         weatherData.fiveDay.push(dailyObj);
       }
-      // Relevant data extracted, add to history
+      // Relevant data extracted, add to history & save to localStorage
       cityHistArr[cityName] = weatherData;
+      localStorage.setItem("cities", JSON.stringify(cityHistArr));
       // Display information
       showCityData(cityName);
     })
     .catch((error) => {
       // Deal with error
       badInput("Error finding city, try again");
-      console.log(error);
     });
 }
 
+// update info on screen
 function showCityData(cityName) {
-  // update info on screen
+  const curCity = cityHistArr[cityName];
+  $("#cur-head").text(`${cityName} ${curCity.date}`);
+  $("#cur-icon").attr("src", `https://openweathermap.org/img/wn/${curCity.icon}.png`);
+  $("#cur-temp").text(Math.round(curCity.temp));
+  $("#cur-hum").text(curCity.humid);
+  $("#cur-windsp").text(curCity.windSpd);
+  // Set badge color based on UVI
+  let uvi = $("#cur-uvindex");
+  uvi.text(curCity.uvi);
+  if (curCity.uvi < 3) {
+    uvi.removeClass("badge-danger badge-warning badge-success");
+    uvi.addClass("badge-success");
+  } else if (curCity.uvi < 6) {
+    uvi.removeClass("badge-danger badge-warning badge-success");
+    uvi.addClass("badge-warning");
+  } else {
+    uvi.removeClass("badge-danger badge-warning badge-success");
+    uvi.addClass("badge-danger");
+  }
+  for (let i = 0; i < 5; i++) {
+    const dayInfo = curCity.fiveDay[i];
+    const dayCard = $(".five-card").eq(i);
+    dayCard.find(".five-date").text(dayInfo.date);
+    dayCard.find(".icon").attr("src", `https://openweathermap.org/img/wn/${dayInfo.icon}.png`);
+    dayCard.find(".five-temp").text(Math.round(dayInfo.temp.day));
+    dayCard.find(".five-hum").text(dayInfo.humid);
+  }
 }
 
 
@@ -99,7 +126,7 @@ inputForm.submit((event) => {
   event.preventDefault();
   const userInput = cityInput.val();
   // test if user inputted string only contains letters
-  if (/^[a-zA-Z .]+$/.test(userInput)) {
+  if (/^[a-zA-Z .,]+$/.test(userInput)) {
     citySubmitted(userInput.toLowerCase());
   } else {
     badInput("Only letters, spaces, and periods please");

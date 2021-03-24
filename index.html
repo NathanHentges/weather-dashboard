@@ -42,9 +42,9 @@
           </div>
           <div class="card-body">
             <div class="list-group" id="city-history">
-              <button type="button" class="list-group-item list-group-item-action hist-city">City</button>
-              <button type="button" class="list-group-item list-group-item-action hist-city">Minneapolis</button>
-              <button type="button" class="list-group-item list-group-item-action hist-city">Chicago</button>
+              <button type="button" class="list-group-item list-group-item-action hist-city text-capitalize">City</button>
+              <button type="button" class="list-group-item list-group-item-action hist-city text-capitalize">Minneapolis</button>
+              <button type="button" class="list-group-item list-group-item-action hist-city text-capitalize">chicago</button>
             </div>
           </div>
 
@@ -57,8 +57,9 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <h3 class="card-title">City (date)</h3>
-                <p>Temperature: <span id="cur-temp"></span>&#176;F</p>
+                <h3 class="card-title text-capitalize" id="cur-head">City (date)</h3>
+                <img class="mb-2 icon" id="cur-icon" src="https://via.placeholder.com/20" alt="weather icon">
+                <p>Temperature: <span id="cur-temp"></span> &#176;F</p>
                 <p>Humidity: <span id="cur-hum"></span>%</p>
                 <p>Wind Speed: <span id="cur-windsp"></span> MPH</p>
                 <p>UV Index: <span id="cur-uvindex" class="badge badge-warning fa-1x py-2">2.48</span></p>
@@ -74,57 +75,57 @@
                 <h4 class="card-title">5-Day Forecast</h4>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
 
-                  <div class="col px-1 5d-card">
+                  <div class="col px-1 five-card mb-2">
                     <div class="card bg-info">
                       <div class="card-body">
-                        <h5 class="card-title 5d-date">Day1</h5>
-                        <img class="mb-2 5d-icon" src="https://via.placeholder.com/20" alt="weather icon">
-                        <p class="card-text mb-1">Temp: <span class="5d-temp"></span> &#176;F</p>
-                        <p class="card-text mb-1">Humidity: <span class="5d-hum"></span>%</p>
+                        <h5 class="card-title five-date">Day1</h5>
+                        <img class="mb-2 icon" src="https://via.placeholder.com/20" alt="weather icon">
+                        <p class="card-text mb-1">Temp: <span class="five-temp"></span> &#176;F</p>
+                        <p class="card-text mb-1">Humidity: <span class="five-hum"></span>%</p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col px-1 5d-card">
+                  <div class="col px-1 five-card mb-2">
                     <div class="card bg-info">
                       <div class="card-body">
-                        <h5 class="card-title 5d-date">Day2</h5>
-                        <img class="mb-2 5d-icon" src="https://via.placeholder.com/20" alt="weather icon">
-                        <p class="card-text mb-1">Temp: <span class="5d-temp"></span> &#176;F</p>
-                        <p class="card-text mb-1">Humidity: <span class="5d-hum"></span>%</p>
+                        <h5 class="card-title five-date">Day2</h5>
+                        <img class="mb-2 icon" src="https://via.placeholder.com/20" alt="weather icon">
+                        <p class="card-text mb-1">Temp: <span class="five-temp"></span> &#176;F</p>
+                        <p class="card-text mb-1">Humidity: <span class="five-hum"></span>%</p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col px-1 5d-card">
+                  <div class="col px-1 five-card mb-2">
                     <div class="card bg-info">
                       <div class="card-body">
-                        <h5 class="card-title 5d-date">Day3</h5>
-                        <img class="mb-2 5d-icon" src="https://via.placeholder.com/20" alt="weather icon">
-                        <p class="card-text mb-1">Temp: <span class="5d-temp"></span> &#176;F</p>
-                        <p class="card-text mb-1">Humidity: <span class="5d-hum"></span>%</p>
+                        <h5 class="card-title five-date">Day3</h5>
+                        <img class="mb-2 icon" src="https://via.placeholder.com/20" alt="weather icon">
+                        <p class="card-text mb-1">Temp: <span class="five-temp"></span> &#176;F</p>
+                        <p class="card-text mb-1">Humidity: <span class="five-hum"></span>%</p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col px-1 5d-card">
+                  <div class="col px-1 five-card mb-2">
                     <div class="card bg-info">
                       <div class="card-body">
-                        <h5 class="card-title 5d-date">Day4</h5>
-                        <img class="mb-2 5d-icon" src="https://via.placeholder.com/20" alt="weather icon">
-                        <p class="card-text mb-1">Temp: <span class="5d-temp"></span> &#176;F</p>
-                        <p class="card-text mb-1">Humidity: <span class="5d-hum"></span>%</p>
+                        <h5 class="card-title five-date">Day4</h5>
+                        <img class="mb-2 icon" src="https://via.placeholder.com/20" alt="weather icon">
+                        <p class="card-text mb-1">Temp: <span class="five-temp"></span> &#176;F</p>
+                        <p class="card-text mb-1">Humidity: <span class="five-hum"></span>%</p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col px-1 5d-card">
+                  <div class="col px-1 five-card mb-2">
                     <div class="card bg-info">
                       <div class="card-body">
-                        <h5 class="card-title 5d-date">Day5</h5>
-                        <img class="mb-2 5d-icon" src="https://via.placeholder.com/20" alt="weather icon">
-                        <p class="card-text mb-1">Temp: <span class="5d-temp"></span> &#176;F</p>
-                        <p class="card-text mb-1">Humidity: <span class="5d-hum"></span>%</p>
+                        <h5 class="card-title five-date">Day5</h5>
+                        <img class="mb-2 icon" src="https://via.placeholder.com/20" alt="weather icon">
+                        <p class="card-text mb-1">Temp: <span class="five-temp"></span> &#176;F</p>
+                        <p class="card-text mb-1">Humidity: <span class="five-hum"></span>%</p>
                       </div>
                     </div>
                   </div>
