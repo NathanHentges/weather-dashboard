@@ -21,27 +21,32 @@
     <div class="row">
 
       <div class="col-12 col-md-4">
-        <div class="card mb-3">
+        <div class="card mb-3" id="city-card">
           <div class="card-body bg-secondary">
             <h4 class="card-title">Search for a city:</h4>
 
-            <form class="form-inline">
+            <form class="form-inline mb-2" id="city-input">
               <div class="form-group">
                 <input type="text" name="city" id="city" class="form-control" placeholder="">
-                <button type=" submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button id="city-submit" type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
             </form>
 
+            <div class="alert alert-danger alert-dismissible fade d-none" role="alert">
+              <p class="mb-0">Error</p>
+              <button id="input-error" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
           </div>
           <div class="card-body">
-            <div class="list-group">
+            <div class="list-group" id="city-history">
               <button type="button" class="list-group-item list-group-item-action hist-city">City</button>
               <button type="button" class="list-group-item list-group-item-action hist-city">Minneapolis</button>
               <button type="button" class="list-group-item list-group-item-action hist-city">Chicago</button>
             </div>
           </div>
-
-
 
         </div>
       </div>
@@ -56,7 +61,7 @@
                 <p>Temperature: <span id="cur-temp"></span>&#176;F</p>
                 <p>Humidity: <span id="cur-hum"></span>%</p>
                 <p>Wind Speed: <span id="cur-windsp"></span> MPH</p>
-                <p>UV Index: <span id="cur-uvindex"></span></p>
+                <p>UV Index: <span id="cur-uvindex" class="badge badge-warning fa-1x py-2">2.48</span></p>
               </div>
             </div>
           </div>
@@ -123,6 +128,7 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
 
               </div>
